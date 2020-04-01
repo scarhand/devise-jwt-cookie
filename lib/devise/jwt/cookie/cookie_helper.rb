@@ -2,13 +2,14 @@ module Devise
   module JWT
     module Cookie
       class CookieHelper
-        include Cookie::Import['name', 'domain']
+        include Cookie::Import['name', 'domain', 'secure']
 
         def build(token)
           res = {
             value: token,
             path: '/',
-            httponly: true
+            httponly: true,
+            secure: secure
           }
           res[:domain] = domain if domain.present?
           [name, res]

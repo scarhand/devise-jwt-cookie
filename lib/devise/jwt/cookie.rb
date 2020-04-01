@@ -15,6 +15,7 @@ module Devise
       extend Dry::Configurable
 
       setting :name, 'access_token'
+      setting :secure, true
       setting :domain
 
       Import = Dry::AutoInject(config)

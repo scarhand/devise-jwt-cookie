@@ -53,3 +53,7 @@ The name of the cookie. Defaults to `access_token`.
 
 The domain the cookie should be issued to. Will be omitted if not set.
 
+#### secure
+
+If a secure cookie should be set, this means the cookie must be sent over a secure connection. Defaults to true.
+
