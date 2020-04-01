@@ -7,7 +7,7 @@
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'devise-jwt', '~> 0.5.9'
+gem 'devise-jwt-cookie', '~> 0.2.0'
 ```
 
 And then execute:
@@ -41,6 +41,7 @@ Devise.setup do |config|
   end
   config.jwt_cookie do |jwt_cookie|
     # ...
+    jwt_cookie.secure = false if Rails.env.development?
   end
 end
 ```
