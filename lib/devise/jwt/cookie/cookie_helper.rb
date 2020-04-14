@@ -5,6 +5,20 @@ module Devise
         include Cookie::Import['name', 'domain', 'secure']
 
         def build(token)
+          if token.nil?
+            remove_cookie
+          else
+            create_cookie(token)
+          end
+        end
+
+        def read_from(cookies)
+          cookies[name]
+        end
+
+        private
+
+        def create_cookie(token)
           res = {
             value: token,
             path: '/',
@@ -15,9 +29,19 @@ module Devise
           [name, res]
         end
 
-        def read_from(cookies)
-          cookies[name]
+        def remove_cookie
+          res = {
+            value: nil,
+            path: '/',
+            httponly: true,
+            secure: secure,
+            max_age: '0',
+            expires: Time.at(0)
+          }
+          res[:domain] = domain if domain.present?
+          [name, res]
         end
+
       end
     end
   end
