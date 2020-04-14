@@ -19,11 +19,13 @@ module Devise
         private
 
         def create_cookie(token)
+          jwt = Warden::JWTAuth::TokenDecoder.new.call(token)
           res = {
             value: token,
             path: '/',
             httponly: true,
-            secure: secure
+            secure: secure,
+            expires: Time.at(jwt['exp'].to_i)
           }
           res[:domain] = domain if domain.present?
           [name, res]
