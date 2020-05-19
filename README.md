@@ -58,3 +58,6 @@ The domain the cookie should be issued to. Will be omitted if not set.
 
 If a secure cookie should be set, this means the cookie must be sent over a secure connection. Defaults to true.
 
+#### same_site
+
+The SameSite value of the cookie. This can be one of 'None', 'Lax' or 'Strict'. When the value is set to 'None', the secure flag *must* be set to true. If no value is provided, most browsers will assume 'Lax' as the default value. 

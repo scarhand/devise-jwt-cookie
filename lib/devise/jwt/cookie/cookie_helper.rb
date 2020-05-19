@@ -2,9 +2,10 @@ module Devise
   module JWT
     module Cookie
       class CookieHelper
-        include Cookie::Import['name', 'domain', 'secure']
+        include Cookie::Import['name', 'domain', 'secure', 'same_site']
 
         def build(token)
+          validate_options!
           if token.nil?
             remove_cookie
           else
@@ -28,6 +29,7 @@ module Devise
             expires: Time.at(jwt['exp'].to_i)
           }
           res[:domain] = domain if domain.present?
+          res[:same_site] = same_site if same_site.present?
           [name, res]
         end
 
@@ -41,9 +43,15 @@ module Devise
             expires: Time.at(0)
           }
           res[:domain] = domain if domain.present?
+          res[:same_site] = same_site if same_site.present?
           [name, res]
         end
 
+        def validate_options!
+          if same_site.present?
+            raise 'If same_site is set to None, the cookie must be secure' if same_site == 'None' && !secure
+            raise 'Invalid value for same_site, should be one of None, Lax or Strict' if !['None', 'Lax', 'Strict'].includes?(same_site)
+          end
       end
     end
   end
