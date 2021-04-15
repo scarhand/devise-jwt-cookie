@@ -7,7 +7,7 @@
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'devise-jwt-cookie', '~> 0.2.0'
+gem 'devise-jwt-cookie', '~> 0.4.0'
 ```
 
 And then execute:
