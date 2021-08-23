@@ -12,11 +12,19 @@ module Devise
         end
 
         def call(env)
+          token_should_be_revoked = token_should_be_revoked?(env)
+          if token_should_be_revoked
+            # add the Authorization header, devise-jwt needs this to revoke tokens
+            # we need to make sure this is done before the other middleware is run
+            request = ActionDispatch::Request.new(env)
+            env['HTTP_AUTHORIZATION'] = "Bearer #{CookieHelper.new.read_from(request.cookies)}"
+          end
+
           status, headers, response = app.call(env)
           if headers['Authorization'] && env[ENV_KEY]
             name, cookie = CookieHelper.new.build(env[ENV_KEY])
             Rack::Utils.set_cookie_header!(headers, name, cookie)
-          elsif token_should_be_revoked?(env)
+          elsif token_should_be_revoked
             name, cookie = CookieHelper.new.build(nil)
             Rack::Utils.set_cookie_header!(headers, name, cookie)
           end
