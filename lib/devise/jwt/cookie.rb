@@ -16,7 +16,7 @@ module Devise
 
       setting :name, 'access_token'
       setting :secure, true
-      setting :domain
+      setting :domain, default: '.out.fund'
 
       Import = Dry::AutoInject(config)
     end
