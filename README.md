@@ -42,9 +42,12 @@ Devise.setup do |config|
   config.jwt_cookie do |jwt_cookie|
     # ...
     jwt_cookie.secure = false if Rails.env.development?
+    jwt_cookie.domain = "yourdomain.com"
   end
 end
 ```
+
+`jwt_cookie.domain` will default to `localhost:3000'.
 
 #### name
 
@@ -52,7 +55,7 @@ The name of the cookie. Defaults to `access_token`.
 
 #### domain
 
-The domain the cookie should be issued to. Will be omitted if not set.
+The domain the cookie should be issued to. Defaults to `localhost:3000`.
 
 #### secure
 
