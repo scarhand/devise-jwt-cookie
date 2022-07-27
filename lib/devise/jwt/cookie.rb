@@ -16,7 +16,7 @@ module Devise
 
       setting :name, default: 'access_token'
       setting :secure, default: true
-      setting :domain, default: 'localhost:3000'
+      setting :domain
 
       Import = Dry::AutoInject(config)
     end
