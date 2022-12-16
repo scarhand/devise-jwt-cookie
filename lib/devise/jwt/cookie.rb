@@ -14,8 +14,8 @@ module Devise
     module Cookie
       extend Dry::Configurable
 
-      setting :name, 'access_token'
-      setting :secure, true
+      setting :name, default: 'access_token'
+      setting :secure, default: true
       setting :domain
 
       Import = Dry::AutoInject(config)
