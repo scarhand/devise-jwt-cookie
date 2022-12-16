@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency 'devise-jwt', '~> 0.6'
+  spec.add_dependency 'devise-jwt', '~> 0.10.0'
   spec.add_dependency 'dry-auto_inject', '~> 0.6'
   spec.add_dependency 'dry-configurable', '~> 0.9', '< 0.11'
 
