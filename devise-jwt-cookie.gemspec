@@ -21,7 +21,7 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency 'devise-jwt', '~> 0.10.0'
-  spec.add_dependency 'dry-auto_inject', '~> 0.6'
+  spec.add_dependency 'dry-auto_inject'
   spec.add_dependency 'dry-configurable', '~> 0.9', '< 0.11'
 
   spec.add_development_dependency "bundler", "> 1"
