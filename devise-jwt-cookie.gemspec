@@ -20,7 +20,7 @@ Gem::Specification.new do |spec|
   spec.executables   = spec.files.grep(%r{^exe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency 'devise-jwt', '~> 0.10.0'
+  spec.add_dependency 'devise-jwt', '~> 0.8.1'
   spec.add_dependency 'dry-auto_inject', '~> 0.7.0'
   spec.add_dependency 'dry-configurable', '~> 0.12.1'
 
@@ -30,7 +30,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "pry-byebug", "~> 3.7"
   # Needed to test the rails fixture application
   spec.add_development_dependency 'rails', '~> 5.0'
-  spec.add_development_dependency 'sqlite3', '~> 1.3'
+  spec.add_development_dependency 'sqlite3', '~> 1.3', '< 1.4.0'
   spec.add_development_dependency 'rspec-rails', '~> 3.5'
   # Test reporting
   spec.add_development_dependency 'simplecov', '0.17'
