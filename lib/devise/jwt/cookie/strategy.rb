@@ -15,8 +15,7 @@ module Devise
         end
 
         def authenticate!
-          # FIXME support aud
-          aud = nil
+          aud = Warden::JWTAuth::EnvHelper.aud_header(env)
           user = Warden::JWTAuth::UserDecoder.new.call(token, scope, aud)
           success!(user)
         rescue ::JWT::DecodeError => exception
