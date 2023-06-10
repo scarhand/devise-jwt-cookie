@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    devise-jwt-cookie (0.6.0)
+    devise-jwt-cookie (0.7.0)
       devise-jwt (~> 0.11.0)
       dry-auto_inject
       dry-configurable
