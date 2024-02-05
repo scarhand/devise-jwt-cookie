@@ -1,10 +1,10 @@
 PATH
   remote: .
   specs:
-    devise-jwt-cookie (0.5.0)
+    devise-jwt-cookie (0.5.2)
       devise-jwt (~> 0.6)
       dry-auto_inject (~> 0.6)
-      dry-configurable (~> 0.9, < 0.11)
+      dry-configurable (~> 0.9)
 
 GEM
   remote: https://rubygems.org/
